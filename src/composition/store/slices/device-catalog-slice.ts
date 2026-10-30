@@ -2,7 +2,8 @@
  * COMPOSITION ROOT — Redux slice: device catalogue data.
  *
  * Data slice (devices + loading + error) kept separate from the UI filter
- * state in device-filter-slice.
+ * state in device-filter-slice. Loading starts true so the dashboard shows
+ * its loading state on first paint (parity with the old useState(true)).
  */
 
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
@@ -17,7 +18,7 @@ interface DeviceCatalogState {
 
 const deviceCatalogSlice = createSlice({
   name: 'deviceCatalog',
-  initialState: { devices: [], loading: false, error: '' } as DeviceCatalogState,
+  initialState: { devices: [], loading: true, error: '' } as DeviceCatalogState,
   reducers: {
     setDevices(state, action: PayloadAction<Device[]>) {
       state.devices = action.payload

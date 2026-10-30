@@ -26,12 +26,12 @@ function makeStore() {
 }
 
 describe('Redux slice: deviceCatalogSlice', () => {
-  it('should start empty and idle', () => {
+  it('should start empty and loading', () => {
     const store = makeStore()
     const state = store.getState()
 
     expect(selectDevices(state)).toEqual([])
-    expect(selectCatalogLoading(state)).toBe(false)
+    expect(selectCatalogLoading(state)).toBe(true)
     expect(selectCatalogError(state)).toBe('')
   })
 
